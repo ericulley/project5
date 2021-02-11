@@ -97,7 +97,7 @@ public class Coin {
     public double getCurrentValue() {
         return this.currentPrice * this.purchaseAmount;
     }
-    
+
 //  toString
     @Override
     public String toString() {
@@ -112,3 +112,4 @@ public class Coin {
                 '}';
     }
 }
+//adding a change for heroku
