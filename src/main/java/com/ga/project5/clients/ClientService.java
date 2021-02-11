@@ -19,8 +19,11 @@ public class ClientService {
         return clientRepository.findAll();
     }
 
-    public void addClient(Client newClient) {
+    public void createClient(Client newClient) {
         clientRepository.save(newClient);
     }
 
+    public void deleteClient(Long id) {
+        clientRepository.deleteById(id);
+    }
 }

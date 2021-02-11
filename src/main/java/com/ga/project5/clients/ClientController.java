@@ -1,10 +1,7 @@
 package com.ga.project5.clients;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,8 +22,14 @@ public class ClientController {
     }
 
     @PostMapping("/clients")
-    public List<Client> createClient(Client newClient) {
-        clientService.addClient(newClient);
+    public List<Client> createClient(@RequestBody Client newClient) {
+        clientService.createClient(newClient);
+        return clientService.getClients();
+    }
+
+    @DeleteMapping("/clients/{id}")
+    public List<Client> deleteClient(@PathVariable Long id) {
+        clientService.deleteClient(id);
         return clientService.getClients();
     }
 
