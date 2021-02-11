@@ -1,4 +1,4 @@
-package com.ga.project5.coin;
+package com.ga.project5.coins;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

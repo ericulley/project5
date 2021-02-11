@@ -1,4 +1,4 @@
-package com.ga.project5.coin;
+package com.ga.project5.coins;
 
 import javax.persistence.*;
 
@@ -16,10 +16,10 @@ public class Coin {
     @Transient
     private double currentValue;
 
-
+// Constructor 1
     public Coin() {
     }
-
+// Constructor 2
     public Coin(Long id,
                 String name,
                 String symbol,
@@ -33,7 +33,7 @@ public class Coin {
         this.purchaseAmount = purchaseAmount;
         this.currentPrice = currentPrice;
     }
-//  ID-less Constructor for DB
+//  Constructor 3: No id for DB
     public Coin(String name,
                 String symbol,
                 double purchasePrice,
@@ -112,4 +112,3 @@ public class Coin {
                 '}';
     }
 }
-//adding a change for heroku
