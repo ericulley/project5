@@ -13,10 +13,10 @@ public class Client {
     private String password;
     private String bio;
 
-//  Constructor 1
+//  Constructor 1: none
     public Client() {
     }
-//  Constructor 2
+//  Constructor 2: All
     public Client(Long id, String name, String email, String password, String bio) {
         this.id = id;
         this.name = name;
@@ -31,7 +31,14 @@ public class Client {
         this.password = password;
         this.bio = bio;
     }
+//  Constructor 4: No id or bio for client initialization
+    public Client(String name, String email, String password) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+    }
 
+//  Getters & Setters
     public Long getId() {
         return id;
     }
