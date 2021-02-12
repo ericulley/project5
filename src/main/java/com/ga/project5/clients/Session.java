@@ -1,4 +1,4 @@
-package com.ga.project5.sessions;
+package com.ga.project5.clients;
 
 import javax.persistence.*;
 

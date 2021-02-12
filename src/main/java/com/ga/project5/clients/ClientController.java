@@ -33,4 +33,8 @@ public class ClientController {
         return clientService.getClients();
     }
 
+    @PostMapping("/sessions")
+    public Boolean startSession(@RequestBody Session newSession) {
+        return clientService.getCredentials(newSession);
+    }
 }
