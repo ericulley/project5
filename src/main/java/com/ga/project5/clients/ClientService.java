@@ -37,7 +37,7 @@ public class ClientService {
         // Verify Email is Unique
         Optional<Client> clientEmail = clientRepository.findOptionalClientByEmail(newClient.getEmail());
         if (clientEmail.isPresent()) {
-            throw new IllegalStateException("email already taken");
+            throw new IllegalStateException("Email already taken.");
         }
         // Encrypt Password
         String password = newClient.getPassword();
