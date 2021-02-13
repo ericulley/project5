@@ -17,7 +17,7 @@ public class CoinConfig {
                     "BTC",
                     35678.56,
                     0.125,
-                    44781.76
+                    0
             );
 
             Coin litecoin = new Coin(
@@ -25,7 +25,7 @@ public class CoinConfig {
                     "LTC",
                     92.01,
                     2.5,
-                    180.92
+                    0
             );
 
             repository.saveAll(

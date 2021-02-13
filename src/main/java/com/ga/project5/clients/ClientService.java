@@ -51,9 +51,9 @@ public class ClientService {
         clientRepository.deleteById(id);
     }
 
-    public Boolean getCredentials(Session newSession) {
+    public AuthUser getCredentials(Session newSession) {
         Client credentials = clientRepository.findClientByEmail(newSession.getEmail());
-        System.out.println(credentials.getPassword());
-        return checkPassword(newSession.getPassword(), credentials.getPassword());
+        AuthUser authUser = new AuthUser(credentials.getName(), credentials.getEmail(), checkPassword(newSession.getPassword(), credentials.getPassword()));
+        return authUser;
     }
 }

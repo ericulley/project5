@@ -10,7 +10,6 @@ public class Coin {
     private Long id;
     private String name;
     private String symbol;
-    private double purchasePrice;
     private double purchaseAmount;
     private double currentPrice;
     @Transient
@@ -29,7 +28,6 @@ public class Coin {
         this.id = id;
         this.name = name;
         this.symbol = symbol;
-        this.purchasePrice = purchasePrice;
         this.purchaseAmount = purchaseAmount;
         this.currentPrice = currentPrice;
     }
@@ -41,7 +39,6 @@ public class Coin {
                 double currentPrice) {
         this.name = name;
         this.symbol = symbol;
-        this.purchasePrice = purchasePrice;
         this.purchaseAmount = purchaseAmount;
         this.currentPrice = currentPrice;
     }
@@ -68,14 +65,6 @@ public class Coin {
 
     public void setSymbol(String symbol) {
         this.symbol = symbol;
-    }
-
-    public double getPurchasePrice() {
-        return purchasePrice;
-    }
-
-    public void setPurchasePrice(double purchasePrice) {
-        this.purchasePrice = purchasePrice;
     }
 
     public double getPurchaseAmount() {
@@ -105,7 +94,6 @@ public class Coin {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", symbol='" + symbol + '\'' +
-                ", purchasePrice=" + purchasePrice +
                 ", purchaseAmount=" + purchaseAmount +
                 ", currentPrice=" + currentPrice +
                 ", currentValue=" + currentValue +
