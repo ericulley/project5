@@ -4,8 +4,8 @@ import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ClientService {
@@ -34,9 +34,16 @@ public class ClientService {
     }
 
     public void createClient(Client newClient) {
+        // Verify Email is Unique
+        Optional<Client> clientEmail = clientRepository.findOptionalClientByEmail(newClient.getEmail());
+        if (clientEmail.isPresent()) {
+            throw new IllegalStateException("email already taken");
+        }
+        // Encrypt Password
         String password = newClient.getPassword();
         String hashedPassword = hashPassword(password);
         newClient.setPassword(hashedPassword);
+        // Save to Repo
         clientRepository.save(newClient);
     }
 
