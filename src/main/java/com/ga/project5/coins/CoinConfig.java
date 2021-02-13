@@ -15,7 +15,6 @@ public class CoinConfig {
             Coin bitcoin = new Coin(
                     "bitcoin",
                     "BTC",
-                    35678.56,
                     0.125,
                     0
             );
@@ -23,7 +22,6 @@ public class CoinConfig {
             Coin litecoin = new Coin(
                     "litecoin",
                     "LTC",
-                    92.01,
                     2.5,
                     0
             );

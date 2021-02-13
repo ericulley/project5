@@ -36,10 +36,10 @@ public class CoinController {
     @PutMapping("/coins/{coinId}")
     public List<Coin> updateCoin(
             @PathVariable Long coinId,
-            @RequestBody Coin coinData,
-            @RequestParam(required = false) Double purchaseAmount,
-            @RequestParam(required = false) Double currentPrice) {
-        coinService.updateCoin(coinId, coinData, purchaseAmount, currentPrice);
+            @RequestBody Coin reqBody) {
+        System.out.println(coinId);
+        System.out.println(reqBody);
+        coinService.updateCoin(coinId, reqBody);
         return coinService.getCoins();
     }
 }

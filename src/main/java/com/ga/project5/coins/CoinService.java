@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CoinService {
@@ -27,18 +28,13 @@ public class CoinService {
     public void deleteCoin(Long coinId) {
         coinRepository.deleteById(coinId);
     }
-    @Transactional
-    public void updateCoin(long coinId, Coin coinData, Double purchaseAmount, Double currentPrice) {
-        coinData.setId(coinId);
 
-        if (purchaseAmount != null) {
-            coinData.setPurchaseAmount(purchaseAmount);
-        }
 
-        if (currentPrice != null) {
-            coinData.setCurrentPrice(currentPrice);
-        }
-
-        coinRepository.save(coinData);
+    public void updateCoin(long coinId, Coin reqBody) {
+        Coin coinToUpdate = coinRepository.getOne(coinId);
+        System.out.println(coinToUpdate);
+        coinToUpdate.setPurchaseAmount(reqBody.getPurchaseAmount());
+        System.out.println(coinToUpdate);
+        coinRepository.save(coinToUpdate);
     }
 }

@@ -1,11 +1,9 @@
-package com.ga.project5.coins;
+package com.ga.project5.wallets;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
-
 @Repository
-public interface CoinRepository extends JpaRepository<Coin, Long> {
+public interface WalletRepository extends JpaRepository<Wallet, Long> {
 
 }

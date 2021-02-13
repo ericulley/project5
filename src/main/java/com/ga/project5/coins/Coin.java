@@ -15,14 +15,14 @@ public class Coin {
     @Transient
     private double currentValue;
 
-// Constructor 1
+// Constructor 1: None
     public Coin() {
     }
-// Constructor 2
+
+    // Constructor 2: All
     public Coin(Long id,
                 String name,
                 String symbol,
-                double purchasePrice,
                 double purchaseAmount,
                 double currentPrice) {
         this.id = id;
@@ -34,7 +34,6 @@ public class Coin {
 //  Constructor 3: No id for DB
     public Coin(String name,
                 String symbol,
-                double purchasePrice,
                 double purchaseAmount,
                 double currentPrice) {
         this.name = name;
