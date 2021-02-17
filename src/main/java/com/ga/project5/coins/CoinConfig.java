@@ -14,14 +14,14 @@ public class CoinConfig {
         return args -> {
             Coin bitcoin = new Coin(
                     "bitcoin",
-                    "BTC",
+                    "btc",
                     0.125,
                     0
             );
 
             Coin litecoin = new Coin(
                     "litecoin",
-                    "LTC",
+                    "ltc",
                     2.5,
                     0
             );

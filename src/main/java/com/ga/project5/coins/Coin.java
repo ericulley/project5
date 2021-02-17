@@ -2,8 +2,8 @@ package com.ga.project5.coins;
 
 import javax.persistence.*;
 
-@Entity
-@Table
+@Entity(name = "Coin")
+@Table(name = "coins")
 public class Coin {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

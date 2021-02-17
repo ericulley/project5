@@ -3,7 +3,6 @@ package com.ga.project5.coins;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,8 +20,18 @@ public class CoinService {
         return coinRepository.findAll();
     }
 
-    public void addNewCoin(Coin coinData) {
-        coinRepository.save(coinData);
+    public Coin getACoin(Long id) {
+        System.out.println("Service: " + id);
+        return coinRepository.findCoinById(id);
+    }
+
+    public Coin addNewCoin(Coin coinData) {
+        Optional<Coin> foundCoin = coinRepository.findOptionalCoinBySymbol(coinData.getSymbol());
+        if (!foundCoin.isPresent()) {
+            coinRepository.save(coinData);
+        }
+        Coin newCoin = coinRepository.findCoinBySymbol(coinData.getSymbol());
+        return newCoin;
     }
 
     public void deleteCoin(Long coinId) {

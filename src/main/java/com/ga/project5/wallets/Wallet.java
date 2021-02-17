@@ -2,29 +2,33 @@ package com.ga.project5.wallets;
 
 import javax.persistence.*;
 
-@Entity
-@Table
+@Entity(name = "Wallet")
+@Table(name = "wallets")
 public class Wallet {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private Long clientId;
+    private Long client;
     private Long coinId;
     private String coinSymbol;
     private Double amountOwned;
 
-    // Constructor 1: All
-    public Wallet(Long id, Long clientId, Long coinId, String coinSymbol, Double amountOwned) {
+    // Constructor 1: None
+    public Wallet() {
+    }
+
+    // Constructor 2: All
+    public Wallet(Long id, Long client, Long coinId, String coinSymbol, Double amountOwned) {
         this.id = id;
-        this.clientId = clientId;
+        this.client = client;
         this.coinId = coinId;
         this.coinSymbol = coinSymbol;
         this.amountOwned = amountOwned;
     }
 
-    // Constructor 2: No id for DB
-    public Wallet(Long clientId, Long coinId, String coinSymbol, Double amountOwned) {
-        this.clientId = clientId;
+    // Constructor 3: No id for DB
+    public Wallet(Long client, Long coinId, String coinSymbol, Double amountOwned) {
+        this.client = client;
         this.coinId = coinId;
         this.coinSymbol = coinSymbol;
         this.amountOwned = amountOwned;
@@ -40,12 +44,12 @@ public class Wallet {
         this.id = id;
     }
 
-    public Long getClientId() {
-        return clientId;
+    public Long getClient() {
+        return client;
     }
 
-    public void setClientId(Long clientId) {
-        this.clientId = clientId;
+    public void setClient(Long client) {
+        this.client = client;
     }
 
     public Long getCoinId() {
@@ -76,7 +80,7 @@ public class Wallet {
     public String toString() {
         return "Wallet{" +
                 "id=" + id +
-                ", clientId=" + clientId +
+                ", clientId=" + client +
                 ", coinId=" + coinId +
                 ", coinSymbol='" + coinSymbol + '\'' +
                 ", amountOwned=" + amountOwned +

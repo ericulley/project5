@@ -1,5 +1,6 @@
 package com.ga.project5.coins;
 
+import com.ga.project5.wallets.Wallet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,15 +17,15 @@ public class CoinController {
         this.coinService = coinService;
     }
 
-    @GetMapping("/coins")
-    public List<Coin> getCoins() {
-        return coinService.getCoins();
+    @GetMapping("/coins/{id}")
+    public Coin getACoin(@PathVariable Long id) {
+        System.out.println("Controller: " + id);
+        return coinService.getACoin(id);
     }
 
     @PostMapping("/coins")
-    public List<Coin> createCoin(@RequestBody Coin coinData) {
-        coinService.addNewCoin(coinData);
-        return coinService.getCoins();
+    public Coin createCoin(@RequestBody Coin coinData) {
+        return coinService.addNewCoin(coinData);
     }
 
     @DeleteMapping("/coins/{coinId}")
@@ -34,12 +35,9 @@ public class CoinController {
     }
 
     @PutMapping("/coins/{coinId}")
-    public List<Coin> updateCoin(
-            @PathVariable Long coinId,
-            @RequestBody Coin reqBody) {
+    public void updateCoin(@PathVariable Long coinId, @RequestBody Coin reqBody) {
         System.out.println(coinId);
         System.out.println(reqBody);
         coinService.updateCoin(coinId, reqBody);
-        return coinService.getCoins();
     }
 }

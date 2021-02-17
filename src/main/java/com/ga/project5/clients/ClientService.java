@@ -53,7 +53,8 @@ public class ClientService {
 
     public AuthUser getCredentials(Session newSession) {
         Client credentials = clientRepository.findClientByEmail(newSession.getEmail());
-        AuthUser authUser = new AuthUser(credentials.getName(), credentials.getEmail(), checkPassword(newSession.getPassword(), credentials.getPassword()));
+        System.out.println(credentials);
+        AuthUser authUser = new AuthUser(credentials.getId() , credentials.getName(), credentials.getEmail(), checkPassword(newSession.getPassword(), credentials.getPassword()));
         return authUser;
     }
 }

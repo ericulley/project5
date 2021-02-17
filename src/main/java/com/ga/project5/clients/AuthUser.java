@@ -1,14 +1,24 @@
 package com.ga.project5.clients;
 
 public class AuthUser {
+    private Long client;
     private String userName;
     private String email;
     private Boolean isAuthorized;
 
-    public AuthUser(String userName, String email, Boolean isAuthorized) {
+    public AuthUser(Long client, String userName, String email, Boolean isAuthorized) {
+        this.client = client;
         this.userName = userName;
         this.email = email;
         this.isAuthorized = isAuthorized;
+    }
+
+    public Long getClient() {
+        return client;
+    }
+
+    public void setClient(Long client) {
+        this.client = client;
     }
 
     public String getUserName() {
@@ -38,7 +48,8 @@ public class AuthUser {
     @Override
     public String toString() {
         return "AuthUser{" +
-                "userName='" + userName + '\'' +
+                "client=" + client +
+                ", userName='" + userName + '\'' +
                 ", email='" + email + '\'' +
                 ", isAuthorized=" + isAuthorized +
                 '}';
