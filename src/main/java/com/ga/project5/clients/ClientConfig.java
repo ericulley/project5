@@ -9,6 +9,16 @@ import java.util.List;
 @Configuration
 public class ClientConfig {
 
+    @Bean
+    CommandLineRunner commandLineRunner (ClientRepository repository){
+        return args -> {
+            Client bob = new Client(
+                    "bob",
+                    "bob@bob.com",
+                    "password"
+            );
+        };
+    }
 
 
 }
