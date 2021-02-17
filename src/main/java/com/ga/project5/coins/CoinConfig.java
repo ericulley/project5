@@ -14,18 +14,16 @@ public class CoinConfig {
         return args -> {
             Coin bitcoin = new Coin(
                     "bitcoin",
-                    "BTC",
-                    35678.56,
+                    "btc",
                     0.125,
-                    44781.76
+                    0
             );
 
             Coin litecoin = new Coin(
                     "litecoin",
-                    "LTC",
-                    92.01,
+                    "ltc",
                     2.5,
-                    180.92
+                    0
             );
 
             repository.saveAll(

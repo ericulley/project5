@@ -2,8 +2,8 @@ package com.ga.project5.clients;
 
 import javax.persistence.*;
 
-@Entity
-@Table
+@Entity(name = "Client")
+@Table(name = "clients")
 public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

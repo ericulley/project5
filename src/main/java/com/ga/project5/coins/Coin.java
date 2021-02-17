@@ -2,46 +2,42 @@ package com.ga.project5.coins;
 
 import javax.persistence.*;
 
-@Entity
-@Table
+@Entity(name = "Coin")
+@Table(name = "coins")
 public class Coin {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
     private String symbol;
-    private double purchasePrice;
     private double purchaseAmount;
     private double currentPrice;
     @Transient
     private double currentValue;
 
-// Constructor 1
+// Constructor 1: None
     public Coin() {
     }
-// Constructor 2
+
+    // Constructor 2: All
     public Coin(Long id,
                 String name,
                 String symbol,
-                double purchasePrice,
                 double purchaseAmount,
                 double currentPrice) {
         this.id = id;
         this.name = name;
         this.symbol = symbol;
-        this.purchasePrice = purchasePrice;
         this.purchaseAmount = purchaseAmount;
         this.currentPrice = currentPrice;
     }
 //  Constructor 3: No id for DB
     public Coin(String name,
                 String symbol,
-                double purchasePrice,
                 double purchaseAmount,
                 double currentPrice) {
         this.name = name;
         this.symbol = symbol;
-        this.purchasePrice = purchasePrice;
         this.purchaseAmount = purchaseAmount;
         this.currentPrice = currentPrice;
     }
@@ -68,14 +64,6 @@ public class Coin {
 
     public void setSymbol(String symbol) {
         this.symbol = symbol;
-    }
-
-    public double getPurchasePrice() {
-        return purchasePrice;
-    }
-
-    public void setPurchasePrice(double purchasePrice) {
-        this.purchasePrice = purchasePrice;
     }
 
     public double getPurchaseAmount() {
@@ -105,7 +93,6 @@ public class Coin {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", symbol='" + symbol + '\'' +
-                ", purchasePrice=" + purchasePrice +
                 ", purchaseAmount=" + purchaseAmount +
                 ", currentPrice=" + currentPrice +
                 ", currentValue=" + currentValue +

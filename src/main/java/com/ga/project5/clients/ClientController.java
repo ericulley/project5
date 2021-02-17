@@ -34,7 +34,7 @@ public class ClientController {
     }
 
     @PostMapping("/sessions")
-    public Boolean startSession(@RequestBody Session newSession) {
+    public AuthUser startSession(@RequestBody Session newSession) {
         return clientService.getCredentials(newSession);
     }
 }
