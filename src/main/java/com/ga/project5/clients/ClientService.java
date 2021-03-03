@@ -1,9 +1,11 @@
 package com.ga.project5.clients;
 
+import com.ga.project5.wallets.WalletRepository;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -11,10 +13,12 @@ import java.util.Optional;
 public class ClientService {
 
     private final ClientRepository clientRepository;
+    private final WalletRepository walletRepository;
 
     @Autowired
-    public ClientService(ClientRepository clientRepository) {
+    public ClientService(ClientRepository clientRepository, WalletRepository walletRepository) {
         this.clientRepository = clientRepository;
+        this.walletRepository = walletRepository;
     }
 
     private String hashPassword(String password) {
@@ -33,6 +37,12 @@ public class ClientService {
         return clientRepository.findAll();
     }
 
+    public Client getClient(Long id) {
+        Client foundClient = clientRepository.findClientById(id);
+        System.out.println(foundClient);
+        return foundClient;
+    }
+
     public void createClient(Client newClient) {
         // Verify Email is Unique
         Optional<Client> clientEmail = clientRepository.findOptionalClientByEmail(newClient.getEmail());
@@ -47,8 +57,10 @@ public class ClientService {
         clientRepository.save(newClient);
     }
 
+    @Transactional
     public void deleteClient(Long id) {
         clientRepository.deleteById(id);
+        walletRepository.deleteByClient(id);
     }
 
     public AuthUser getCredentials(Session newSession) {

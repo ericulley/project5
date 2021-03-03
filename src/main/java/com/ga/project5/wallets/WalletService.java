@@ -25,15 +25,22 @@ public class WalletService {
 
     public void createWalletEntry(Wallet newWallet) {
         Optional<Wallet> foundWallet;
-        foundWallet = walletRepository.findByClientAndCoinId(newWallet.getClient(), newWallet.getCoinId());
+        foundWallet = walletRepository.findByClientAndCoinSymbol(newWallet.getClient(), newWallet.getCoinSymbol());
         if (!foundWallet.isPresent()) {
             walletRepository.save(newWallet);
+        } else {
+            throw new IllegalStateException("This coin is already in this user's wallet.");
         }
     }
 
-    public void deleteWalletEntry(Long id) {
-        Wallet toDelete = walletRepository.findByCoinId(id);
-        System.out.println(toDelete);
-        walletRepository.delete(toDelete);
+    public void updateWalletEntry(Long id, Wallet newAmount) {
+        Wallet foundWallet = walletRepository.findWalletById(id);
+        foundWallet.setAmountOwned(newAmount.getAmountOwned());
+        walletRepository.save(foundWallet);
     }
+
+    public void deleteWalletEntry(Long id) {
+        walletRepository.deleteById(id);
+    }
+
 }

@@ -16,9 +16,9 @@ public class ClientController {
         this.clientService = clientService;
     }
 
-    @GetMapping("/clients")
-    public List<Client> getClients() {
-        return clientService.getClients();
+    @GetMapping("/clients/{id}")
+    public Client getClient(@PathVariable Long id) {
+        return clientService.getClient(id);
     }
 
     @PostMapping("/clients")
@@ -28,9 +28,8 @@ public class ClientController {
     }
 
     @DeleteMapping("/clients/{id}")
-    public List<Client> deleteClient(@PathVariable Long id) {
+    public void deleteClient(@PathVariable Long id) {
         clientService.deleteClient(id);
-        return clientService.getClients();
     }
 
     @PostMapping("/sessions")
