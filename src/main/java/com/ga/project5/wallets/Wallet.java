@@ -9,7 +9,6 @@ public class Wallet {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Long client;
-    private Long coinId;
     private String coinSymbol;
     private Double amountOwned;
 
@@ -18,24 +17,26 @@ public class Wallet {
     }
 
     // Constructor 2: All
-    public Wallet(Long id, Long client, Long coinId, String coinSymbol, Double amountOwned) {
+    public Wallet(Long id, Long client, String coinSymbol, Double amountOwned) {
         this.id = id;
         this.client = client;
-        this.coinId = coinId;
         this.coinSymbol = coinSymbol;
         this.amountOwned = amountOwned;
     }
 
     // Constructor 3: No id for DB
-    public Wallet(Long client, Long coinId, String coinSymbol, Double amountOwned) {
+    public Wallet(Long client, String coinSymbol, Double amountOwned) {
         this.client = client;
-        this.coinId = coinId;
         this.coinSymbol = coinSymbol;
         this.amountOwned = amountOwned;
     }
 
-    // Getters & Setters
+    // Constructor 4: Update Amount
+    public Wallet(Double amountOwned) {
+        this.amountOwned = amountOwned;
+    }
 
+    // Getters & Setters
     public Long getId() {
         return id;
     }
@@ -50,14 +51,6 @@ public class Wallet {
 
     public void setClient(Long client) {
         this.client = client;
-    }
-
-    public Long getCoinId() {
-        return coinId;
-    }
-
-    public void setCoinId(Long coinId) {
-        this.coinId = coinId;
     }
 
     public String getCoinSymbol() {
@@ -81,7 +74,6 @@ public class Wallet {
         return "Wallet{" +
                 "id=" + id +
                 ", clientId=" + client +
-                ", coinId=" + coinId +
                 ", coinSymbol='" + coinSymbol + '\'' +
                 ", amountOwned=" + amountOwned +
                 '}';

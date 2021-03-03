@@ -9,11 +9,11 @@ import java.util.Optional;
 @Repository
 public interface WalletRepository extends JpaRepository<Wallet, Long> {
 
-    Optional<Wallet> findByClientAndCoinId(Long client, Long coinId);
-
     List<Wallet> findAllByClient(Long client);
 
-    void deleteByCoinId(Long id);
+    Optional<Wallet> findByClientAndCoinSymbol(Long client, String coinSymbol);
 
-    Wallet findByCoinId(Long id);
+    Wallet findWalletById(Long id);
+
+    void deleteByClient(Long id);
 }

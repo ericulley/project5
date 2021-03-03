@@ -5,6 +5,7 @@ import com.ga.project5.clients.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @CrossOrigin
@@ -25,13 +26,17 @@ public class WalletController {
 
     @PostMapping("/wallets")
     public void createWalletEntry(@RequestBody Wallet newWallet) {
-        System.out.println(newWallet);
+        System.out.println("Created Wallet: " + newWallet);
         walletService.createWalletEntry(newWallet);
+    }
+
+    @PutMapping("/wallets/{id}")
+    public void updateWalletEntry(@PathVariable Long id, @RequestBody Wallet newAmount) {
+        walletService.updateWalletEntry(id, newAmount);
     }
 
     @DeleteMapping("/wallets/{id}")
     public void deleteWalletEntry(@PathVariable Long id) {
         walletService.deleteWalletEntry(id);
     }
-
 }
